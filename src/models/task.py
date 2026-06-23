@@ -1,3 +1,4 @@
+from src.models.deadline import Deadline
 from enum import Enum
 
 class TaskStatus(Enum):
@@ -16,11 +17,12 @@ class Task:
         TaskStatus.FAILED: [],
         TaskStatus.CANCELED: []
     }
-    def __init__(self, name, description, status=TaskStatus.PENDING, task_id=None):
+    def __init__(self, name, description, status=TaskStatus.PENDING, task_id=None, deadline: Deadline=None):
         self.task_id=task_id
         self.name=name
         self.description=description
         self.status= self._parse_status(status)
+        self.deadline=deadline
 
     def __repr__(self):
         return f"Task(task_id={self.task_id}, name={self.name}, status={self.status})"
@@ -35,7 +37,6 @@ class Task:
             except ValueError:
                 raise ValueError(f"Status inválido {status}")
         raise TypeError("Status deve ser do tipo TaskStatus ou texto")
-
 
     def update_status(self, new_status):
         new_status = self._parse_status(new_status)
