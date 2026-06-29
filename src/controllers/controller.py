@@ -1,9 +1,8 @@
-
 def create(name, description, manager):
     name = name.strip()
     description = description.strip()
-    if len(name) < 3:
-        return False, "O nome deve conter pelo menos 3 caracteres."
+    if len(name) < 4:
+        return False, "O nome deve conter pelo menos 4 caracteres."
     if len(description) < 5:
         return False, "A descrição deve conter pelo menos 5 caracteres."
     return True, manager.create_task(name, description)
