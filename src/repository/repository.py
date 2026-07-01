@@ -4,8 +4,8 @@ from src.models.task import Task
 from src.models.deadline import Deadline
 
 class Repository:
-    def __init__(self):
-        self.connection = Connection('task.db')
+    def __init__(self, connection):
+        self.connection = connection
         self.connection.execute("""
             CREATE TABLE IF NOT EXISTS tasks(
                 id INTEGER PRIMARY KEY AUTOINCREMENT,

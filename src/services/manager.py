@@ -2,8 +2,8 @@ from src.repository.repository import Repository
 from src.models.task import Task
 
 class Manager:
-    def __init__(self):
-        self.task_repository = Repository()
+    def __init__(self, task_repository):
+        self.task_repository = task_repository
 
     def create_task(self, name, description):
         new_task = Task(name, description)
